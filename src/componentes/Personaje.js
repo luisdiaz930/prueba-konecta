@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {  useParams } from 'react-router-dom';
-
 import Comentarios from './Comentarios';
 
 
@@ -17,7 +16,7 @@ const Personaje = () => {
     
     }
 
- //frases
+      //frases
     const [frases, setFrases] = useState([])    
     const obtenerFrases = async()=>{
         const res2 = await axios.get('https://breakingbadapi.com/api/quotes/')
@@ -48,9 +47,27 @@ const Personaje = () => {
           component=<ul>
           {
             frasesAutor.map((frase)=>{
-              return (<li key={frase.quote_id} className="list-group-item">{frase.quote}</li>)
+              return (<li key={frase.quote_id} className="list-group-item">{frase.quote}
+              
+              <form>
+                <strong>Agregue una Calificacion:</strong>
+                  <p class="clasificacion">
+                      <input id="radio1" type="radio" name="estrellas" value="5" />
+                      <label for="radio1">★</label>
+                      <input id="radio2" type="radio" name="estrellas" value="4" />
+                      <label for="radio2">★</label>
+                      <input id="radio3" type="radio" name="estrellas" value="3" />
+                      <label for="radio3">★</label>
+                      <input id="radio4" type="radio" name="estrellas" value="2" />
+                      <label for="radio4">★</label>
+                      <input id="radio5" type="radio" name="estrellas" value="1" />
+                      <label for="radio5">★</label>
+                  </p>
+              </form>
+              
+              </li>)
             })
-          }</ul>
+          }  </ul>
          
         }
         return component;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import TablaPersonaje from './TablaPersonaje';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -34,48 +33,47 @@ export default function FiltrarPersonaje() {
   return (
     <div className="container"> 
      
-      <div className="input-group anchoinfo">  
-      <input type="text" aria-label="Last name" className="form-control" value={q} onChange={(e) => setQ(e.target.value)} placeholder="buscar..." />  
-     </div>
-     <div className="alert alert-info anchoinfo"   role="alert" >
-      Seleccione los filtro con los que desea buscar.
-      </div>
+        <div className="input-group anchoinfo">  
+            <input type="text" aria-label="Last name" className="form-control" value={q} onChange={(e) => setQ(e.target.value)} placeholder="buscar..." />  
+        </div>
 
- 
-        
-        {columns &&
-          columns.map((column) => (
-            <label className="form-check-label" for="flexCheckDefault">
-              <br/>
-              <div className="form-check">
-              <input 
-              type="checkbox" 
-              checked={searchColumns.includes(column)}
-              className="form-check-input"             
-              id="flexCheckDefault" 
-              autocomplete="off"              
-              onChange={(e) => {
-                const checked = searchColumns.includes(column);
-                setSearchColumns((prev) => 
-                checked
-                  ? prev.filter((sc) => sc !== column)
-                  : [...prev, column]
-                  );
-              }} />             
-              
-              {column}
-              
-              </div>
-            </label>
-          ))
-        }
-        <br/><br/>
-     
+        <div className="alert alert-info anchoinfo"   role="alert" >
+          Seleccione los filtro con los que desea buscar.
+        </div> 
+          
+          {columns &&
+            columns.map((column) => (
+              <label className="form-check-label" for="flexCheckDefault">
+                <br/>
+                <div className="form-check">
+                <input 
+                type="checkbox" 
+                checked={searchColumns.includes(column)}
+                className="form-check-input"             
+                id="flexCheckDefault" 
+                autocomplete="off"              
+                onChange={(e) => {
+                  const checked = searchColumns.includes(column);
+                  setSearchColumns((prev) => 
+                  checked
+                    ? prev.filter((sc) => sc !== column)
+                    : [...prev, column]
+                    );
+                }} />             
+                
+                {column}
+                
+                </div>
+              </label>
+            ))
+          }
+          <br/><br/>
       
-     <TablaPersonaje data={search(data)}/>
+        
+      <TablaPersonaje data={search(data)}/>
 
      
-           </div>
+   </div>
   );
 }
 

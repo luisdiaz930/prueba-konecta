@@ -4,33 +4,33 @@ import {Button,Row,Container,Col,Form,Navbar,Table} from 'react-bootstrap';
 
 function Comentarios()  {
 
-    const [tasks, setTasks] = React.useState([]);
-    const [newTask, setnewTask]= React.useState('');
+    const [coments, setComents] = React.useState([]);
+    const [newComent, setnewComent]= React.useState('');
   
 
     React.useEffect(() => {
-        const readTasks = () => {
-            if (localStorage.getItem('tasks')) {
-                setTasks(JSON.parse(localStorage.getItem('tasks')))
+        const readComents = () => {
+            if (localStorage.getItem('coments')) {
+                setComents(JSON.parse(localStorage.getItem('coments')))
             }
         }
 
-       readTasks()
+       readComents()
         
     }, []);
 
     const onCreate = () => {
-        tasks.push(newTask)
-        localStorage.setItem('tasks', JSON.stringify(tasks))
-        setnewTask('')
+        coments.push(newComent)
+        localStorage.setItem('coments', JSON.stringify(coments))
+        setnewComent('')
     };
 
-    function onDelete (task){
-        let index = tasks.indexOf(task);
-        tasks.splice(index,1)
-        localStorage.setItem('tasks',JSON.stringify(tasks))
-        setnewTask('')
-        setTasks(JSON.parse(localStorage.getItem('tasks')))
+    function onDelete (coment){
+        let index = coments.indexOf(coment);
+        coments.splice(index,1)
+        localStorage.setItem('coments',JSON.stringify(coments))
+        setnewComent('')
+        setComents(JSON.parse(localStorage.getItem('coments')))
     }
 
 
@@ -51,7 +51,7 @@ function Comentarios()  {
                     <h3>Agrega un Comentario</h3>
                     <Form>
                     <Form.Group controlId="exampleForm.ControlTextarea1">                       
-                        <Form.Control as="textarea" autoComplete="off" value={newTask} onChange={e => setnewTask(e.target.value)} rows={3} />
+                        <Form.Control as="textarea" autoComplete="off" value={newComent} onChange={e => setnewComent(e.target.value)} rows={3} />
                     </Form.Group>
                        
                         <Button variant="primary" onClick={onCreate}>Crear Comentario</Button>
@@ -70,11 +70,11 @@ function Comentarios()  {
                             </tr>
                         </thead>
                         <tbody>
-                            {tasks.map(task => (
-                                <tr key={task }>
-                                    <td>{task}</td>
+                            {coments.map(coment => (
+                                <tr key={coment }>
+                                    <td>{coment}</td>
                                     <td></td>
-                                    <td width="50px"><Button variant="danger" onClick={() => onDelete(task)}>❌</Button></td>
+                                    <td width="50px"><Button variant="danger" onClick={() => onDelete(coment)}>❌</Button></td>
                                 </tr>
                             ))}
                         </tbody>

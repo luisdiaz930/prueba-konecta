@@ -4,6 +4,7 @@ import Personaje from './componentes/Personaje';
 import Paginacion from './componentes/Paginacion';
 import FiltrarPersonaje from './componentes/FiltrarPersonaje';
 import Menu from './componentes/Menu';
+import Favoritos from './componentes/Favoritos'
 import axios from 'axios';
 import './App.css';
 
@@ -11,8 +12,8 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  
+  Route
+    
 } from 'react-router-dom';
 
 
@@ -40,37 +41,40 @@ function App() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = personajes.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Change page
+  // Change paginacion
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
   return (
     <div className='container mt-5'>
+      <Router>      
+        <Menu />
 
-      <p>holaaaaa</p>
-    <Router>
-      <Menu />
-      <Switch>
+        <Switch>
 
-        <Route exact path="/">       
-          <Personajes personajes={currentPosts} loading={loading} />  
-          <Paginacion
-          postsPerPage={postsPerPage}
-          totalPosts={personajes.length}
-          paginate={paginate}      />            
-        </Route>
+            <Route exact path="/">       
+              <Personajes personajes={currentPosts} loading={loading} />  
+              <Paginacion
+              postsPerPage={postsPerPage}
+              totalPosts={personajes.length}
+              paginate={paginate}      />            
+            </Route>
 
-        <Route exact path="/personaje/:char_id">
-          <Personaje/>                
-        </Route >
+            <Route exact path="/personaje/:char_id">
+              <Personaje/>                
+            </Route >
 
-        <Route exact path="/filtrarPersonaje">         
-          <FiltrarPersonaje />        
-        </Route >
+            <Route exact path="/filtrarPersonaje">         
+              <FiltrarPersonaje />        
+            </Route >
+
+            <Route exact path="/favoritos">         
+              <Favoritos />        
+            </Route >
+        
+        </Switch>
       
-      </Switch>
-    
-    </Router>
+      </Router>
     </div> 
    
   );

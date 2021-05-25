@@ -10,7 +10,7 @@ const Menu = () => {
                         <Link className="nav-link" to="/" >Inicio Personajes</Link> 
                     </li>
                     <li>
-                        <Link className="nav-link"  >Mis frases favoritas ⭐</Link>
+                        <Link className="nav-link" to="/favoritos"  >Mis frases favoritas ⭐</Link>
                     </li>
                     <li>
                         <Link className="nav-link" to="/filtrarPersonaje" >Busqueda por Filtros 🔎</Link>
